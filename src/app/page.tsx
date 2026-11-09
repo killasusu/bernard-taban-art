@@ -36,7 +36,8 @@ export default function Home() {
         <Link href={`/works/${hero.slug}`} className="block">
           <ArtworkImage artwork={hero} priority sizes="(min-width: 768px) 50vw, 100vw" className="shadow-2xl shadow-black/20" />
           <p className="mt-3 text-sm text-muted">
-            <span className="font-display text-base text-foreground italic">{hero.title}</span>, {hero.year}
+            <span className="font-display text-base text-foreground italic">{hero.title}</span>
+            {hero.year && `, ${hero.year}`}
           </p>
         </Link>
       </section>
@@ -55,11 +56,26 @@ export default function Home() {
         </div>
       </section>
 
+      {artist.statement && (
+        <section className="mx-auto mt-24 max-w-4xl px-5 text-center">
+          <blockquote className="font-display text-3xl leading-snug italic sm:text-4xl">
+            “{artist.statement}”
+          </blockquote>
+          <p className="mt-6 text-sm uppercase tracking-widest text-muted">{artist.name}</p>
+        </section>
+      )}
+
       <section className="mx-auto mt-24 max-w-4xl px-5 text-center">
-        <blockquote className="font-display text-3xl leading-snug italic sm:text-4xl">
-          “{artist.statement}”
-        </blockquote>
-        <p className="mt-6 text-sm uppercase tracking-widest text-muted">{artist.name}</p>
+        <h2 className="font-display text-3xl sm:text-4xl">Commission a portrait</h2>
+        <p className="mx-auto mt-4 max-w-xl text-lg text-muted">
+          Have a photo of someone special? Bernard can turn it into a hand-drawn pencil portrait.
+        </p>
+        <Link
+          href="/contact"
+          className="mt-8 inline-block rounded-full bg-foreground px-6 py-3 text-sm uppercase tracking-widest text-background hover:bg-accent"
+        >
+          Get in touch
+        </Link>
       </section>
     </>
   );

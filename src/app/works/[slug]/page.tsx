@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { ArtworkImage } from "@/components/ArtworkImage";
-import { artist } from "@/data/artist";
+import { artist, enquireHref } from "@/data/artist";
 import { artworks, availabilityLabel, getArtwork } from "@/data/artworks";
 
 export function generateStaticParams() {
@@ -12,10 +13,18 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/works/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const art = getArtwork(slug);
-  return art ? { title: art.title, description: `${art.title} (${art.year}), ${art.medium}` } : {};
+  return art ? { title: art.title, description: `${art.title}, ${art.medium} by ${artist.name}` } : {};
 }
 
-export default async function ArtworkPage({ params }: PageProps<"/works/[slug]">) {
+export default function ArtworkPage({ params }: PageProps<"/works/[slug]">) {
+  return (
+    <Suspense fallback={<div className="min-h-[70vh]" />}>
+      <ArtworkDetail params={params} />
+    </Suspense>
+  );
+}
+
+async function ArtworkDetail({ params }: { params: PageProps<"/works/[slug]">["params"] }) {
   const { slug } = await params;
   const art = getArtwork(slug);
   if (!art) notFound();
@@ -23,7 +32,7 @@ export default async function ArtworkPage({ params }: PageProps<"/works/[slug]">
   const i = artworks.indexOf(art);
   const prev = artworks[(i - 1 + artworks.length) % artworks.length];
   const next = artworks[(i + 1) % artworks.length];
-  const subject = encodeURIComponent(`Enquiry: ${art.title} (${art.year})`);
+  const subject = `Enquiry: ${art.title}`;
 
   return (
     <div className="mx-auto max-w-6xl px-5 py-12">
@@ -36,12 +45,16 @@ export default async function ArtworkPage({ params }: PageProps<"/works/[slug]">
           <p className="text-sm uppercase tracking-[0.25em] text-accent">{art.series} series</p>
           <h1 className="mt-3 font-display text-4xl leading-tight sm:text-5xl">{art.title}</h1>
           <dl className="mt-8 divide-y divide-line border-y border-line text-sm">
-            {[
-              ["Year", art.year],
-              ["Medium", art.medium],
-              ["Size", art.size],
-              ["Status", availabilityLabel[art.availability]],
-            ].map(([k, v]) => (
+            {(
+              [
+                ["Year", art.year],
+                ["Medium", art.medium],
+                ["Size", art.size],
+                ["Status", art.availability && availabilityLabel[art.availability]],
+              ] as const
+            )
+              .filter(([, v]) => v)
+              .map(([k, v]) => (
               <div key={k} className="flex justify-between py-3">
                 <dt className="text-muted">{k}</dt>
                 <dd>{v}</dd>
@@ -49,9 +62,11 @@ export default async function ArtworkPage({ params }: PageProps<"/works/[slug]">
             ))}
           </dl>
           <p className="mt-8 leading-relaxed">{art.description}</p>
-          {art.availability === "available" && (
+          {art.availability !== "sold" && art.availability !== "private" && (
             <a
-              href={`mailto:${artist.email}?subject=${subject}`}
+              href={enquireHref(subject)}
+              target={artist.email ? undefined : "_blank"}
+              rel="noreferrer"
               className="mt-8 inline-block rounded-full bg-foreground px-6 py-3 text-sm uppercase tracking-widest text-background hover:bg-accent"
             >
               Enquire about this work

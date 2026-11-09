@@ -1,36 +1,42 @@
 // ─────────────────────────────────────────────────────────────
 //  EDIT ME: everything about the artist lives here.
-//  Text marked [PLACEHOLDER] should be replaced with real details.
+//  Details below come from Bernard's public Facebook profile and the
+//  signatures on his drawings. Please confirm them with Bernard.
 // ─────────────────────────────────────────────────────────────
 
 export const artist = {
   name: "Bernard Taban",
-  tagline: "Paintings & mixed media",
-  location: "Juba, South Sudan",
-  email: "hello@bernardtabanart.com", // [PLACEHOLDER] real email
-  phone: "", // optional, e.g. "+211 9xx xxx xxx"
+  tagline: "Hyperrealistic pencil & charcoal portraits",
+  location: "Kampala, Uganda",
+  alias: "Venom Art",
+  email: "", // add a public email when Bernard has one
+  phone: "", // optional, e.g. "+256 7xx xxx xxx"
   socials: [
-    { label: "Instagram", href: "https://instagram.com/" }, // [PLACEHOLDER]
-    { label: "Facebook", href: "https://facebook.com/" }, // [PLACEHOLDER]
+    { label: "TikTok", href: "https://www.tiktok.com/@bernerdtaban" },
+    { label: "Facebook", href: "https://www.facebook.com/bernerd.taban" },
   ],
+  /** where enquiries go when there is no email */
+  contactHref: "https://www.facebook.com/bernerd.taban",
   intro:
-    "[PLACEHOLDER] A short, one- or two-sentence introduction to Bernard's work: the subjects, the materials, and what drives the practice.",
+    "Hyperrealistic portraits drawn by hand in graphite and charcoal: faces, hands, eyes and wildlife, rendered one careful layer at a time.",
   bio: [
-    "[PLACEHOLDER] Paragraph one: where Bernard grew up, how he came to art, and his training or self-taught path.",
-    "[PLACEHOLDER] Paragraph two: the themes in the work (people, landscape, memory, community), the techniques and materials used.",
-    "[PLACEHOLDER] Paragraph three: current projects, collaborations, and what collectors or visitors can expect.",
+    "Bernard Taban is a self-described digital creator and pencil artist based in Kampala, Uganda. He signs much of his work as “Venom Art”.",
+    "His drawings focus on people: portraits full of character, close studies of eyes, hands and skin, and faces lit against deep black backgrounds. He also draws wildlife, including lions and foxes, and devotional pieces.",
+    "Bernard takes commissions for hand-drawn portraits and shares new work and drawing videos on TikTok and Facebook.",
   ],
-  statement:
-    "[PLACEHOLDER] An artist statement in Bernard's own words, a sentence or two that could be quoted.",
-  portrait: "", // e.g. "/bernard.jpg" once a photo is added to /public
+  statement: "", // a short quote in Bernard's own words, shown on the home page
+  portrait: "", // e.g. "/bernard.jpg" once a photo of Bernard is added to /public
   copyrightYear: 2026,
 };
 
 export type Exhibition = { year: string; title: string; place: string };
 
-// [PLACEHOLDER] Replace with real exhibitions, residencies, awards
-export const exhibitions: Exhibition[] = [
-  { year: "2026", title: "Exhibition title", place: "Gallery or venue, City" },
-  { year: "2025", title: "Group show title", place: "Venue, City" },
-  { year: "2024", title: "Residency or award", place: "Organisation, City" },
-];
+// Add exhibitions, awards or notable commissions when known.
+export const exhibitions: Exhibition[] = [];
+
+/** Link for enquiries: email if set, otherwise Bernard's Facebook. */
+export function enquireHref(subject: string) {
+  return artist.email
+    ? `mailto:${artist.email}?subject=${encodeURIComponent(subject)}`
+    : artist.contactHref;
+}

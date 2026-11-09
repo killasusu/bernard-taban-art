@@ -13,10 +13,11 @@ export function ArtworkCard({ artwork }: { artwork: Artwork }) {
         <h3 className="font-display text-lg leading-tight group-hover:underline group-hover:underline-offset-4">
           {artwork.title}
         </h3>
-        <span className="shrink-0 text-sm text-muted">{artwork.year}</span>
+        {artwork.year && <span className="shrink-0 text-sm text-muted">{artwork.year}</span>}
       </div>
       <p className="text-sm text-muted">
-        {artwork.medium} · {availabilityLabel[artwork.availability]}
+        {artwork.medium}
+        {artwork.availability && ` · ${availabilityLabel[artwork.availability]}`}
       </p>
     </Link>
   );

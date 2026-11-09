@@ -21,7 +21,7 @@ export function ArtworkImage({
       {artwork.image ? (
         <Image
           src={artwork.image}
-          alt={`${artwork.title}, ${artwork.medium}, ${artwork.year}`}
+          alt={`${artwork.title}, ${artwork.medium} by Bernard Taban`}
           fill
           sizes={sizes}
           priority={priority}
