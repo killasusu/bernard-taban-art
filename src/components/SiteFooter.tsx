@@ -29,7 +29,7 @@ export function SiteFooter() {
           </a>
         </div>
         <p className="mt-6 border-t border-[#333] pt-6 text-sm text-night-muted">
-          © {artist.copyrightYear} {artist.name} Art · {artist.country}
+          © {artist.copyrightYear} {artist.alias} · {artist.name} · {artist.country}
         </p>
       </div>
     </footer>

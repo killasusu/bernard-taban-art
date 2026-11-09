@@ -1,6 +1,6 @@
-# Bernard Taban Art
+# BeRRo Art
 
-Portfolio website for **Bernard Taban (BeRRo Art)**, a pencil portrait artist from Wau, South Sudan, studying art in Kampala, Uganda.
+Portfolio website for **BeRRo Art**, the work of **Bernard Taban**, a pencil portrait artist from Wau, South Sudan, studying art in Kampala, Uganda.
 
 **Live site:** https://bernard-taban-art.vercel.app
 

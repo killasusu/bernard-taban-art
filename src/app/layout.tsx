@@ -14,13 +14,16 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: `${artist.name} Art | Pencil portraits drawn by hand`, template: `%s | ${artist.name} Art` },
+  title: {
+    default: `${artist.alias} | Pencil portraits by ${artist.name}`,
+    template: `%s | ${artist.alias}`,
+  },
   description,
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    siteName: `${artist.name} Art`,
-    title: `${artist.name} Art | Every face, drawn by hand`,
+    siteName: artist.alias,
+    title: `${artist.alias} | Every face, drawn by hand`,
     description,
     locale: "en",
   },
