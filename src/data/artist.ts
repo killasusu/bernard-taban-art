@@ -22,14 +22,56 @@ export const artist = {
   ],
 };
 
-export type Price = { label: string; price: string; note: string; popular?: boolean };
+// ─────────────────────────────────────────────────────────────
+//  PRICES: fill in each `price`, e.g. "150,000 UGX" or "$40".
+//  An empty price shows an "Ask" link that opens WhatsApp about
+//  that exact option. Use "On request" for things priced case by case.
+// ─────────────────────────────────────────────────────────────
 
-// Set `price` to e.g. "150,000 SSP" or "$40". Empty shows "Ask for price".
-export const prices: Price[] = [
-  { label: "A4 portrait", price: "", note: "Unframed. A thoughtful gift." },
-  { label: "A3 portrait", price: "", note: "Larger, with more detail.", popular: true },
-  { label: "A3 framed", price: "", note: "Glass and wooden frame, ready to present." },
+export type PriceRow = { label: string; price: string };
+export type PriceGroup = {
+  title: string;
+  description: string;
+  rows: PriceRow[];
+  highlight?: string;
+};
+
+export const priceGroups: PriceGroup[] = [
+  {
+    title: "Pencil portrait",
+    description: "Graphite and charcoal on quality drawing paper, drawn from your photo. Unframed.",
+    highlight: "Most popular",
+    rows: [
+      { label: "A4, one person", price: "" },
+      { label: "A3, one person", price: "" },
+      { label: "A3, two people", price: "" },
+      { label: "Larger or more people", price: "On request" },
+    ],
+  },
+  {
+    title: "Framing",
+    description: "Glass and wooden frame, ready to present or hang. Added to any portrait.",
+    rows: [
+      { label: "A4 frame", price: "" },
+      { label: "A3 frame", price: "" },
+    ],
+  },
+  {
+    title: "Engraved glass",
+    description: "An image engraved into glass by hand, dot by dot, then framed over black.",
+    rows: [{ label: "Any subject", price: "On request" }],
+  },
 ];
+
+/** Short facts shown under the prices. Empty strings are hidden. */
+export const priceTerms = {
+  /** e.g. "Usually 1 to 2 weeks" */
+  turnaround: "",
+  deposit: "50% deposit to start, the balance on pickup or delivery.",
+  signed: "Every piece is signed by Bernard.",
+  /** e.g. "Delivery in Kampala; shipping to Juba and Wau on request" */
+  delivery: "",
+};
 
 export const steps = [
   { title: "Send a clear photo", text: "A sharp photo with good light." },

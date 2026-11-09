@@ -23,7 +23,9 @@ Almost everything lives in two files:
 
 ### Set prices
 
-In `src/data/artist.ts`, fill in `price` for each size, for example `"150,000 SSP"`. While a price is empty, its card shows an "Ask for price" link to WhatsApp.
+In `src/data/artist.ts`, `priceGroups` lists every option (pencil portrait by size and number of people, framing, engraved glass). Fill in each `price`, for example `"150,000 UGX"`. While a price is empty, that row shows an "Ask" link that opens WhatsApp about that exact option; use `"On request"` for things priced case by case.
+
+`priceTerms` holds the short facts under the prices. Fill in `turnaround` (for example `"Usually 1 to 2 weeks"`) and `delivery` when known; empty ones are hidden.
 
 ## Running it locally
 

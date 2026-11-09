@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { PricesSection } from "@/components/PricesSection";
 import { WorkCard } from "@/components/WorkCard";
-import { artist, orderLink, prices, steps } from "@/data/artist";
+import { artist, orderLink, steps } from "@/data/artist";
 import { artworks } from "@/data/artworks";
 import { SITE_URL } from "@/lib/site";
 import heroPhoto from "../../public/bernard-with-ambassador-portrait.jpg";
@@ -102,46 +103,7 @@ export default function Home() {
       </section>
 
       {/* Prices */}
-      <section id="prices" className="scroll-mt-4 bg-surface">
-        <div className="wrap py-[88px]">
-          <h2 className="h-section mt-0 mb-3">Prices</h2>
-          <p className="mt-0 mb-10 text-[17px] text-muted">
-            One person per portrait. Extra people or detailed backgrounds cost a little more.
-          </p>
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-5">
-            {prices.map((p) => (
-              <div
-                key={p.label}
-                className={`flex flex-col gap-2.5 rounded-2xl ${
-                  p.popular ? "border-2 border-accent p-[27px]" : "border border-line p-7"
-                }`}
-              >
-                <p className={`m-0 text-[15px] font-semibold ${p.popular ? "text-accent" : "text-muted"}`}>
-                  {p.label}
-                  {p.popular && " · Most popular"}
-                </p>
-                {p.price ? (
-                  <p className="m-0 font-display text-4xl font-bold">{p.price}</p>
-                ) : (
-                  <a
-                    href={orderLink(`Hello Bernard, what is the price for the ${p.label} option?`).href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="group/ask inline-flex min-h-11 items-center gap-2 self-start font-display text-[28px] leading-[44px] font-bold text-foreground underline decoration-accent decoration-2 underline-offset-[6px] hover:text-accent"
-                  >
-                    Ask for price
-                    <span aria-hidden="true" className="transition-transform group-hover/ask:translate-x-1">
-                      →
-                    </span>
-                    <span className="sr-only">for the {p.label} on {order.via}</span>
-                  </a>
-                )}
-                <p className="m-0 text-[15px] leading-normal text-ink-2">{p.note}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PricesSection />
 
       {/* How to order */}
       <section id="order" className="wrap scroll-mt-4 py-[88px]">
