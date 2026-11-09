@@ -18,7 +18,7 @@ export const artist = {
   copyrightYear: 2026,
   about: [
     "Bernard Taban is a young pencil portrait artist from Wau, South Sudan. He is currently studying art in Kampala, Uganda, and works under the name “BeRRo Art”.",
-    "He draws detailed graphite and charcoal portraits from photographs: faces full of character, close studies of eyes and hands, and the occasional lion or fox. He also engraves images into glass by hand. He shares new drawings and videos of his process on TikTok and Facebook.",
+    "He draws detailed graphite and charcoal portraits from photographs: faces full of character, close studies of eyes and hands, and striking wildlife. He also engraves images into glass by hand. He shares new drawings and videos of his process on TikTok and Facebook.",
   ],
 };
 
