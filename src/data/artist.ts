@@ -1,13 +1,13 @@
 // ─────────────────────────────────────────────────────────────
 //  EDIT ME: everything about the artist lives here.
-//  Fill in `whatsapp` and the `prices` to complete the site; until then
-//  buttons fall back to Facebook and prices show "Ask for price".
+//  Fill in the `prices` to complete the site; until then each price
+//  card shows an "Ask for price" link to WhatsApp.
 // ─────────────────────────────────────────────────────────────
 
 export const artist = {
   name: "Bernard Taban",
   alias: "Venom Art",
-  eyebrow: "Pencil portrait artist · South Sudan",
+  eyebrow: "Pencil portrait artist · Wau, South Sudan",
   country: "South Sudan",
   /** digits only, with country code, e.g. "211912345678". Empty = use Facebook. */
   whatsapp: "256790243772",
@@ -17,7 +17,7 @@ export const artist = {
   tiktok: "https://www.tiktok.com/@bernerdtaban",
   copyrightYear: 2026,
   about: [
-    "Bernard Taban is a young pencil portrait artist from South Sudan, based in Kampala, Uganda. He signs much of his work as “Venom Art”.",
+    "Bernard Taban is a young pencil portrait artist from Wau, South Sudan. He is currently studying art in Uganda, and signs much of his work as “Venom Art”.",
     "He draws detailed graphite and charcoal portraits from photographs: faces full of character, close studies of eyes and hands, and the occasional lion or fox. He also engraves images into glass by hand. He shares new drawings and videos of his process on TikTok and Facebook.",
   ],
 };
