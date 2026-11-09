@@ -42,9 +42,9 @@ export const priceGroups: PriceGroup[] = [
     description: "Graphite and charcoal on quality drawing paper, drawn from your photo. Unframed.",
     highlight: "Most popular",
     rows: [
-      { label: "A4, one person", price: "" },
-      { label: "A3, one person", price: "" },
-      { label: "A3, two people", price: "" },
+      { label: "A4, one person", price: "$30" },
+      { label: "A3, one person", price: "$50" },
+      { label: "A3, two people", price: "$80" },
       { label: "Larger or more people", price: "On request" },
     ],
   },
