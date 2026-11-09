@@ -69,7 +69,7 @@ export default function Home() {
       <section id="work" className="wrap scroll-mt-4 pt-24 pb-20">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <h2 className="h-section m-0">Selected work</h2>
-          <p className="m-0 text-base text-muted">Graphite on paper</p>
+          <p className="m-0 text-base text-muted">Graphite, charcoal and engraved glass</p>
         </div>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-6">
           {featured.map((a, i) => (

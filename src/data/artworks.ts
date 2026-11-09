@@ -57,9 +57,9 @@ export const artworks: Artwork[] = [
   {
     slug: "lion-king",
     title: "Lion King",
-    medium: "Pencil on black paper, framed",
-    series: "Wildlife",
-    description: "A lion emerging from darkness, drawn in light tones on black paper and framed.",
+    medium: "Hand-engraved glass, framed",
+    series: "Glass art",
+    description: "A lion engraved into a pane of glass by hand, dot by dot, then framed over a black background so the image shines.",
     image: img("lion-king"),
     ratio: 0.7565,
     palette: mono,
