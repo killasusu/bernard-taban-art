@@ -1,42 +1,44 @@
 // ─────────────────────────────────────────────────────────────
 //  EDIT ME: everything about the artist lives here.
-//  Details below come from Bernard's public Facebook profile and the
-//  signatures on his drawings. Please confirm them with Bernard.
+//  Fill in `whatsapp` and the `prices` to complete the site; until then
+//  buttons fall back to Facebook and prices show "Ask for price".
 // ─────────────────────────────────────────────────────────────
 
 export const artist = {
   name: "Bernard Taban",
-  tagline: "Hyperrealistic pencil & charcoal portraits",
-  location: "Kampala, Uganda",
   alias: "Venom Art",
-  email: "", // add a public email when Bernard has one
-  phone: "", // optional, e.g. "+256 7xx xxx xxx"
-  socials: [
-    { label: "TikTok", href: "https://www.tiktok.com/@bernerdtaban" },
-    { label: "Facebook", href: "https://www.facebook.com/bernerd.taban" },
-  ],
-  /** where enquiries go when there is no email */
-  contactHref: "https://www.facebook.com/bernerd.taban",
-  intro:
-    "Hyperrealistic portraits drawn by hand in graphite and charcoal: faces, hands, eyes and wildlife, rendered one careful layer at a time.",
-  bio: [
-    "Bernard Taban is a self-described digital creator and pencil artist based in Kampala, Uganda. He signs much of his work as “Venom Art”.",
-    "His drawings focus on people: portraits full of character, close studies of eyes, hands and skin, and faces lit against deep black backgrounds. He also draws wildlife, including lions and foxes, and devotional pieces.",
-    "Bernard takes commissions for hand-drawn portraits and shares new work and drawing videos on TikTok and Facebook.",
-  ],
-  statement: "", // a short quote in Bernard's own words, shown on the home page
-  portrait: "", // e.g. "/bernard.jpg" once a photo of Bernard is added to /public
+  eyebrow: "Pencil portrait artist · South Sudan",
+  country: "South Sudan",
+  /** digits only, with country code, e.g. "211912345678". Empty = use Facebook. */
+  whatsapp: "",
+  facebook: "https://www.facebook.com/bernerd.taban",
+  tiktok: "https://www.tiktok.com/@bernerdtaban",
   copyrightYear: 2026,
+  about: [
+    "Bernard Taban is a young pencil portrait artist from South Sudan, based in Kampala, Uganda. He signs much of his work as “Venom Art”.",
+    "He draws detailed graphite and charcoal portraits from photographs: faces full of character, close studies of eyes and hands, and the occasional lion or fox. He shares new drawings and videos of his process on TikTok and Facebook.",
+  ],
 };
 
-export type Exhibition = { year: string; title: string; place: string };
+export type Price = { label: string; price: string; note: string; popular?: boolean };
 
-// Add exhibitions, awards or notable commissions when known.
-export const exhibitions: Exhibition[] = [];
+// Set `price` to e.g. "150,000 SSP" or "$40". Empty shows "Ask for price".
+export const prices: Price[] = [
+  { label: "A4 portrait", price: "", note: "Unframed. A thoughtful gift." },
+  { label: "A3 portrait", price: "", note: "Larger, with more detail.", popular: true },
+  { label: "A3 framed", price: "", note: "Glass and wooden frame, ready to present." },
+];
 
-/** Link for enquiries: email if set, otherwise Bernard's Facebook. */
-export function enquireHref(subject: string) {
-  return artist.email
-    ? `mailto:${artist.email}?subject=${encodeURIComponent(subject)}`
-    : artist.contactHref;
+export const steps = [
+  { title: "Send a clear photo", text: "A sharp photo with good light." },
+  { title: "Choose size and date", text: "Agree the price and when you need it." },
+  { title: "Pay a 50% deposit", text: "Bernard starts drawing once it arrives." },
+  { title: "Collect your portrait", text: "Pay the balance on pickup or delivery." },
+];
+
+/** Where "Order" buttons go: WhatsApp if a number is set, otherwise Facebook. */
+export function orderLink(message = "Hello Bernard, I would like to order a portrait.") {
+  return artist.whatsapp
+    ? { href: `https://wa.me/${artist.whatsapp}?text=${encodeURIComponent(message)}`, via: "WhatsApp" }
+    : { href: artist.facebook, via: "Facebook" };
 }

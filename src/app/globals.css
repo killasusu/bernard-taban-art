@@ -1,31 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f6f1e8;
-  --foreground: #1d1814;
-  --muted: #6f655b;
-  --line: #ddd3c4;
-  --accent: #b5532b;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #15120f;
-    --foreground: #efe7da;
-    --muted: #a39789;
-    --line: #342d26;
-    --accent: #e08454;
-  }
+  --background: #f4f4f2;
+  --foreground: #161616;
+  --surface: #ffffff;
+  --ink-2: #444444;
+  --muted: #555555;
+  --line: #dddddd;
+  --accent: #9a4a12;
+  --accent-dark: #6e340c;
+  --accent-light: #e0a06c;
+  --night-text: #cfcfcb;
+  --night-muted: #a8a8a3;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-ink-2: var(--ink-2);
   --color-muted: var(--muted);
   --color-line: var(--line);
   --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-light: var(--accent-light);
+  --color-night-text: var(--night-text);
+  --color-night-muted: var(--night-muted);
   --font-sans: var(--font-inter);
-  --font-display: var(--font-fraunces);
+  --font-display: var(--font-space-grotesk);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -35,5 +41,36 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: var(--background);
+  color: #fff;
+}
+
+/* shared building blocks from the design */
+@utility wrap {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+@utility eyebrow {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+@utility h-section {
+  font-family: var(--font-space-grotesk);
+  font-weight: 700;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+@utility pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 16px 28px;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
 }

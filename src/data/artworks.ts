@@ -31,6 +31,30 @@ const PENCIL = "Graphite & charcoal on paper";
 
 export const artworks: Artwork[] = [
   {
+    slug: "ambassador",
+    title: "Ambassador portrait",
+    medium: "Graphite on paper, framed",
+    series: "Commissions",
+    availability: "commission",
+    description: "A commissioned portrait of an ambassador in suit and glasses, framed for presentation.",
+    image: img("ambassador"),
+    ratio: 0.773,
+    palette: mono,
+    featured: true,
+  },
+  {
+    slug: "ziko",
+    title: "Ziko with his award",
+    medium: "Graphite on paper, framed",
+    series: "Commissions",
+    availability: "commission",
+    description: "South Sudanese comedian Ziko with his Best Comedian of the Year awards, drawn and presented to him in person.",
+    image: img("ziko"),
+    ratio: 0.761,
+    palette: mono,
+    featured: true,
+  },
+  {
     slug: "lion-king",
     title: "Lion King",
     medium: "Pencil on black paper, framed",

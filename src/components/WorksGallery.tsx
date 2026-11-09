@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { Artwork } from "@/data/artworks";
-import { ArtworkCard } from "./ArtworkCard";
+import { WorkCard } from "./WorkCard";
 
 export function WorksGallery({ artworks, series }: { artworks: Artwork[]; series: string[] }) {
   const [active, setActive] = useState<string>("All");
@@ -17,21 +17,19 @@ export function WorksGallery({ artworks, series }: { artworks: Artwork[]; series
             type="button"
             onClick={() => setActive(s)}
             aria-pressed={active === s}
-            className={`rounded-full border px-4 py-1.5 text-sm transition ${
+            className={`min-h-11 rounded-full border px-5 text-[15px] font-semibold transition ${
               active === s
-                ? "border-foreground bg-foreground text-background"
-                : "border-line hover:border-foreground"
+                ? "border-foreground bg-foreground text-white"
+                : "border-line bg-surface hover:border-foreground"
             }`}
           >
             {s}
           </button>
         ))}
       </div>
-      <div className="columns-1 gap-8 sm:columns-2 lg:columns-3">
-        {shown.map((a) => (
-          <div key={a.slug} className="mb-10 break-inside-avoid">
-            <ArtworkCard artwork={a} />
-          </div>
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-6">
+        {shown.map((a, i) => (
+          <WorkCard key={a.slug} artwork={a} eager={i < 4} />
         ))}
       </div>
     </>
