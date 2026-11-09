@@ -17,7 +17,7 @@ export function SiteFooter() {
             rel="noreferrer"
             className="pill bg-accent-light text-foreground hover:bg-white"
           >
-            {artist.whatsapp ? `WhatsApp +${artist.whatsapp}` : "Message on Facebook"}
+            {artist.whatsapp ? `WhatsApp ${artist.whatsappDisplay}` : "Message on Facebook"}
           </a>
           {artist.whatsapp && (
             <a href={artist.facebook} target="_blank" rel="noreferrer" className="pill border border-background text-background hover:bg-background hover:text-foreground">

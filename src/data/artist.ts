@@ -10,7 +10,9 @@ export const artist = {
   eyebrow: "Pencil portrait artist · South Sudan",
   country: "South Sudan",
   /** digits only, with country code, e.g. "211912345678". Empty = use Facebook. */
-  whatsapp: "",
+  whatsapp: "256790243772",
+  /** how the number is shown on the site */
+  whatsappDisplay: "+256 790 243 772",
   facebook: "https://www.facebook.com/bernerd.taban",
   tiktok: "https://www.tiktok.com/@bernerdtaban",
   copyrightYear: 2026,
