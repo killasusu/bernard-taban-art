@@ -10,7 +10,7 @@ export default function WorksPage() {
       <p className="eyebrow text-accent">Portfolio</p>
       <h1 className="h-section mt-4 mb-3 text-[clamp(40px,5vw,60px)]">All work</h1>
       <p className="mt-0 mb-10 text-[17px] text-muted">
-        {artworks.length} drawings in graphite and charcoal. Tap any drawing to see it larger.
+        {artworks.length} works in graphite, charcoal and engraved glass. Tap any piece to see it larger.
       </p>
       <WorksGallery artworks={artworks} series={series} />
     </div>

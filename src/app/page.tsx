@@ -78,7 +78,7 @@ export default function Home() {
         </div>
         <div className="mt-10">
           <Link href="/works" className="pill border border-foreground px-[27px] py-[15px] text-foreground hover:bg-foreground hover:text-white">
-            See all {artworks.length} drawings
+            See all {artworks.length} works
           </Link>
         </div>
       </section>
