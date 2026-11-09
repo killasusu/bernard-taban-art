@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bernard Taban Art
 
-## Getting Started
+Portfolio website for **Bernard Taban (BeRRo Art)**, a pencil portrait artist from Wau, South Sudan, studying art in Kampala, Uganda.
 
-First, run the development server:
+**Live site:** https://bernard-taban-art.vercel.app
+
+Built with Next.js 16, React 19 and Tailwind CSS 4. Every push to `main` redeploys automatically on Vercel.
+
+## Editing the content
+
+Almost everything lives in two files:
+
+| File | What it holds |
+| --- | --- |
+| `src/data/artist.ts` | Bio, WhatsApp number, social links, **prices**, the "How to order" steps |
+| `src/data/artworks.ts` | Every artwork: title, medium, series, description, which ones are featured on the home page |
+
+### Add an artwork
+
+1. Put the photo in `public/artworks/`, for example `public/artworks/sunset.jpg` (about 1600px on the long side is plenty).
+2. Add an entry to the list in `src/data/artworks.ts` with `slug: "sunset"`, `image: img("sunset")` and its `ratio` (width ÷ height).
+3. Set `featured: true` to show it in "Selected work" on the home page.
+
+### Set prices
+
+In `src/data/artist.ts`, fill in `price` for each size, for example `"150,000 SSP"`. While a price is empty, its card shows an "Ask for price" link to WhatsApp.
+
+## Running it locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Hosted on Vercel (team Kill75). The environment variable `NEXT_PUBLIC_SITE_URL` must be set to the site's public address so link previews, the sitemap and canonical URLs point to it. Update it if a custom domain is added.
