@@ -13,7 +13,18 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/works/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const art = getArtwork(slug);
-  return art ? { title: art.title, description: `${art.title}, ${art.medium} by ${artist.name}` } : {};
+  if (!art) return {};
+  const description = `${art.title}: ${art.medium} by ${artist.name}. ${art.description}`;
+  return {
+    title: art.title,
+    description,
+    alternates: { canonical: `/works/${art.slug}` },
+    openGraph: {
+      title: `${art.title} by ${artist.name}`,
+      description,
+      images: art.image ? [{ url: art.image, alt: `${art.title}, ${art.medium}` }] : undefined,
+    },
+  };
 }
 
 export default function ArtworkPage({ params }: PageProps<"/works/[slug]">) {
@@ -51,15 +62,24 @@ async function ArtworkDetail({ params }: { params: PageProps<"/works/[slug]">["p
       <div className="mt-4 flex flex-wrap items-start gap-14">
         <div className="min-w-0 flex-[1_1_480px] rounded-[20px] bg-surface p-4">
           {art.image && (
-            <Image
-              src={art.image}
-              alt={`${art.title}, ${art.medium} by Bernard Taban`}
-              width={1600}
-              height={Math.round(1600 / art.ratio)}
-              priority
-              sizes="(min-width: 1100px) 640px, 100vw"
-              className="block h-auto max-h-[80vh] w-full rounded-lg object-contain"
-            />
+            <a href={art.image} target="_blank" rel="noreferrer" className="group block cursor-zoom-in">
+              <Image
+                src={art.image}
+                alt={`${art.title}, ${art.medium} by Bernard Taban`}
+                width={1600}
+                height={Math.round(1600 / art.ratio)}
+                priority
+                sizes="(min-width: 1100px) 640px, 100vw"
+                className="block h-auto max-h-[80vh] w-full rounded-lg object-contain"
+              />
+              <span className="mt-3 flex min-h-11 items-center justify-center gap-2 text-[15px] font-semibold text-muted group-hover:text-accent">
+                <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="M21 21l-4.3-4.3M11 8v6M8 11h6" />
+                </svg>
+                View full size
+              </span>
+            </a>
           )}
         </div>
         <div className="flex min-w-0 flex-[999_1_320px] flex-col gap-5 lg:pt-4">

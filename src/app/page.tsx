@@ -3,15 +3,33 @@ import Link from "next/link";
 import { WorkCard } from "@/components/WorkCard";
 import { artist, orderLink, prices, steps } from "@/data/artist";
 import { artworks } from "@/data/artworks";
+import { SITE_URL } from "@/lib/site";
 import heroPhoto from "../../public/bernard-with-ambassador-portrait.jpg";
 import zikoPhoto from "../../public/bernard-presenting-to-ziko.jpg";
 
 export default function Home() {
   const featured = artworks.filter((a) => a.featured);
   const order = orderLink();
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: artist.name,
+    alternateName: artist.alias,
+    jobTitle: "Pencil portrait artist",
+    description: "Hand-drawn graphite and charcoal portraits and engraved glass art.",
+    url: SITE_URL,
+    image: `${SITE_URL}/bernard-with-ambassador-portrait.jpg`,
+    birthPlace: { "@type": "Place", name: "Wau, South Sudan" },
+    homeLocation: { "@type": "Place", name: "Kampala, Uganda" },
+    sameAs: [artist.facebook, artist.tiktok],
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+      />
       {/* Hero */}
       <section className="wrap flex flex-wrap items-center gap-14 pt-12 pb-20">
         <div className="flex min-w-0 flex-[999_1_460px] flex-col gap-6">

@@ -8,7 +8,7 @@ export function WorkCard({ artwork, eager = false }: { artwork: Artwork; eager?:
       href={`/works/${artwork.slug}`}
       className="group flex flex-col gap-3 rounded-2xl bg-surface p-4 text-foreground transition-shadow hover:shadow-lg hover:shadow-black/5"
     >
-      <div className="relative h-[340px] overflow-hidden rounded-lg bg-line">
+      <div className="relative h-[340px] overflow-hidden rounded-lg bg-background">
         {artwork.image && (
           <Image
             src={artwork.image}
@@ -16,7 +16,7 @@ export function WorkCard({ artwork, eager = false }: { artwork: Artwork; eager?:
             fill
             sizes="(min-width: 1200px) 280px, (min-width: 640px) 45vw, 100vw"
             loading={eager ? "eager" : "lazy"}
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            className="object-contain p-2 transition-transform duration-500 group-hover:scale-[1.03]"
           />
         )}
       </div>

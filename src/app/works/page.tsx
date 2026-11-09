@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { WorksGallery } from "@/components/WorksGallery";
 import { artworks, series } from "@/data/artworks";
 
-export const metadata: Metadata = { title: "All work" };
+export const metadata: Metadata = {
+  title: "All work",
+  description: "Pencil and charcoal portraits, studies and engraved glass by Bernard Taban.",
+  alternates: { canonical: "/works" },
+};
 
 export default function WorksPage() {
   return (
