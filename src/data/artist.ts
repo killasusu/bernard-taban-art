@@ -17,7 +17,7 @@ export const artist = {
   tiktok: "https://www.tiktok.com/@bernerdtaban",
   copyrightYear: 2026,
   about: [
-    "Bernard Taban is a young pencil portrait artist from Wau, South Sudan. He is currently studying art in Uganda, and signs much of his work as “Venom Art”.",
+    "Bernard Taban is a young pencil portrait artist from Wau, South Sudan. He is currently studying art in Kampala, Uganda, and signs much of his work as “Venom Art”.",
     "He draws detailed graphite and charcoal portraits from photographs: faces full of character, close studies of eyes and hands, and the occasional lion or fox. He also engraves images into glass by hand. He shares new drawings and videos of his process on TikTok and Facebook.",
   ],
 };
