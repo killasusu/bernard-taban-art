@@ -102,9 +102,22 @@ export default function Home() {
                   {p.label}
                   {p.popular && " · Most popular"}
                 </p>
-                <p className={`m-0 font-display font-bold ${p.price ? "text-4xl" : "text-[28px] leading-[44px]"}`}>
-                  {p.price || "Ask for price"}
-                </p>
+                {p.price ? (
+                  <p className="m-0 font-display text-4xl font-bold">{p.price}</p>
+                ) : (
+                  <a
+                    href={orderLink(`Hello Bernard, what is the price for the ${p.label.toLowerCase()} option?`).href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group/ask inline-flex min-h-11 items-center gap-2 self-start font-display text-[28px] leading-[44px] font-bold text-foreground underline decoration-accent decoration-2 underline-offset-[6px] hover:text-accent"
+                  >
+                    Ask for price
+                    <span aria-hidden="true" className="transition-transform group-hover/ask:translate-x-1">
+                      →
+                    </span>
+                    <span className="sr-only">for the {p.label} on {order.via}</span>
+                  </a>
+                )}
                 <p className="m-0 text-[15px] leading-normal text-ink-2">{p.note}</p>
               </div>
             ))}
