@@ -106,7 +106,7 @@ export default function Home() {
                   <p className="m-0 font-display text-4xl font-bold">{p.price}</p>
                 ) : (
                   <a
-                    href={orderLink(`Hello Bernard, what is the price for the ${p.label.toLowerCase()} option?`).href}
+                    href={orderLink(`Hello Bernard, what is the price for the ${p.label} option?`).href}
                     target="_blank"
                     rel="noreferrer"
                     className="group/ask inline-flex min-h-11 items-center gap-2 self-start font-display text-[28px] leading-[44px] font-bold text-foreground underline decoration-accent decoration-2 underline-offset-[6px] hover:text-accent"
